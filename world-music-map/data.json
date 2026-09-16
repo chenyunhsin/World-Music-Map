@@ -1,0 +1,15 @@
+{
+    "Taiwan": {
+        "name": "台灣 (Taiwan)",
+        "eras": {
+            "1930s": { "title": "1930年代 - 雨夜花", "videoId": "1X82g4Slb5g" },
+            "1970s": { "title": "1970年代 - 橄欖樹", "videoId": "9Wl5z3v8n4U" }
+        }
+    },
+    "Japan": {
+        "name": "日本 (Japan)",
+        "eras": {
+            "1980s": { "title": "1980年代 - 塑料愛", "videoId": "9Gj47G2e1Jc" }
+        }
+    }
+}
