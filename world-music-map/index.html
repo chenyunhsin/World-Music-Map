@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界音樂時光機</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🌍 世界音樂時光機</h1>
+        <p>點擊地圖上的國家，選擇年代，聆聽當地的歷史音樂</p>
+    </header>
+
+    <main>
+        <!-- Map Container -->
+        <div id="map"></div>
+
+        <!-- Control / Player Panel -->
+        <div id="control-panel">
+            <h2 id="selected-country">請點擊地圖上的國家</h2>
+            <div id="era-selection" class="hidden">
+                <label for="era-select">選擇年代：</label>
+                <select id="era-select">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            
+            <!-- YouTube Player Container -->
+            <div id="player-container">
+                <p id="player-placeholder">尚未選擇音樂</p>
+                <div id="youtube-embed"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
