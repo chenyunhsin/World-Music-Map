@@ -6,30 +6,34 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
-let musicDatabase = {};
+// Embedded database to ensure zero-error loading on GitHub Pages
+const musicDatabase = {
+    "Taiwan": {
+        name: "台灣 (Taiwan)",
+        eras: {
+            "1930s": { title: "1930年代 - 雨夜花", videoId: "1X82g4Slb5g" },
+            "1970s": { title: "1970年代 - 橄欖樹", videoId: "9Wl5z3v8n4U" }
+        }
+    },
+    "Japan": {
+        name: "日本 (Japan)",
+        eras: {
+            "1980s": { title: "1980年代 - 塑料愛", videoId: "9Gj47G2e1Jc" }
+        }
+    }
+};
+
 let currentCountryKey = null;
 
-// Fetch external JSON data instead of hardcoding
-// Fetch external data to keep code clean and modular
-fetch('data.json')
-    .then(response => response.json())
-    .then(data => {
-        musicDatabase = data;
-        initMapMarkers();
-    })
-    .catch(error => console.error('Error loading music data:', error));
+const locations = [
+    { name: "Taiwan", lat: 23.6978, lng: 120.9605, key: "Taiwan" },
+    { name: "Japan", lat: 36.2048, lng: 138.2529, key: "Japan" }
+];
 
-function initMapMarkers() {
-    const locations = [
-        { name: "Taiwan", lat: 23.6978, lng: 120.9605, key: "Taiwan" },
-        { name: "Japan", lat: 36.2048, lng: 138.2529, key: "Japan" }
-    ];
-
-    locations.forEach(loc => {
-        let marker = L.marker([loc.lat, loc.lng]).addTo(map);
-        marker.bindPopup(`<b>${loc.name}</b><br><button onclick="selectCountry('${loc.key}')">選擇這個國家</button>`);
-    });
-}
+locations.forEach(loc => {
+    let marker = L.marker([loc.lat, loc.lng]).addTo(map);
+    marker.bindPopup(`<b>${loc.name}</b><br><button onclick="selectCountry('${loc.key}')">選擇這個國家</button>`);
+});
 
 function selectCountry(countryKey) {
     currentCountryKey = countryKey;
